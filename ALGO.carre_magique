@@ -1,0 +1,81 @@
+ALGO.carre_magique
+
+CONST
+Tmax=11
+
+VAR 
+n, count, i ,j : ENTIER
+cell:tableau[1..Tmax,1..Tmax] DE ENTIER 
+
+DEBUT 
+
+n<--1 
+
+   POUR i DE 1 A Tmax FAIRE 
+   DEBUT 
+     POUR j DE 1 A Tmax FAIRE
+     DEBUT 
+       cell[i,j]<--0 
+     END
+   END
+
+   i<-- Tmax div 2
+   j<-- Tmax div 2 +1 
+   cell[i,j]<-- n
+
+
+POUR count DE 1 A ((Tmax*Tmax)-1) FAIRE 
+     DEBUT
+       n<-- n+1 
+       i<-- i-1 
+       j<-- j+1 
+
+     SI i<1 ALORS 
+        i<-- Tmax 
+     FINSI 
+     
+     SI j<1 ALORS 
+        j<-- Tmax 
+     FINSI 
+     
+     SI i> Tmax ALORS 
+        i<-- 1
+     FINSI 
+
+     SI j>Tmax ALORS 
+        j<-- 1
+     FINSI 
+
+     TANTQUE cell[i,j]<>0 FAIRE 
+     DEBUT 
+     i<-- i-1 
+     j<-- j-1 
+
+    	 SI i<1 ALORS 
+        	i<-- Tmax 
+     	FINSI 
+     
+     	SI j<1 ALORS 
+        	j<-- Tmax 
+     	FINSI 
+     
+     	SI i> Tmax ALORS 
+       		i<-- 1
+     	FINSI 
+
+     	SI j>Tmax ALORS 
+        	j<-- 1
+     	FINSI 
+    FINTANTQUE
+	cell[i,j]<-- 0
+FINPOUR
+
+POUR i DE 1 A Tmax FAIRE 
+DEBUT 
+   POUR j DE 1 A Tmax FAIRE 
+   DEBUT 
+   ECRIRE (cell[i,j]:2,' ')
+   FINPOUR
+ FINPOUR
+
+ FIN.
